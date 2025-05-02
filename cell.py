@@ -25,3 +25,8 @@ class Cell():
         if self.has_bottom_wall:
             bline = Line(Point(self.x1,self.y2), Point(self.x2, self.y2))
             self.win.draw_line(bline)
+
+    def draw_move(self, to_cell, undo=False):
+        color = "red" if undo == False else "black"
+        line = Line(Point((self.x1+self.x2)/2,(self.y1+self.y2)/2),Point((to_cell.x1+to_cell.x2)/2,(to_cell.y1+to_cell.y2)/2))
+        self.win.draw_line(line,color)
