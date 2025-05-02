@@ -13,6 +13,8 @@ class Cell():
         self.win = window
 
     def draw(self):
+        if self.win is None:
+            return
         if self.has_left_wall:
             lline = Line(Point(self.x1,self.y1), Point(self.x1, self.y2))
             self.win.draw_line(lline)
@@ -27,6 +29,6 @@ class Cell():
             self.win.draw_line(bline)
 
     def draw_move(self, to_cell, undo=False):
-        color = "red" if undo == False else "black"
+        color = "red" if not undo else "gray"
         line = Line(Point((self.x1+self.x2)/2,(self.y1+self.y2)/2),Point((to_cell.x1+to_cell.x2)/2,(to_cell.y1+to_cell.y2)/2))
         self.win.draw_line(line,color)

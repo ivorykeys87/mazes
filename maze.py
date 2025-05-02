@@ -3,7 +3,7 @@ from graphics import Point, Window
 import time
 
 class Maze():
-    def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win):
+    def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win=None):
         self.x1 = x1
         self.y1 = y1
         self.num_rows = num_rows
@@ -24,8 +24,9 @@ class Maze():
             for r in range(self.num_rows):
                 cell = Cell(p1=Point(cx1,cy1), p2 = Point(cx2,cy2), window=self.win)
                 row.append(cell)
-                cell.draw()
-                self.animate()
+                if self.win != None:
+                    cell.draw()
+                    self.animate()
                 cy1 += self.cell_size_y
                 cy2 += self.cell_size_y
             self.cells.append(row)
