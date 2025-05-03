@@ -34,8 +34,21 @@ class Maze():
             cy1 = self.y1
             cx2 += self.cell_size_x
             cy2 = self.y1 + self.cell_size_y
+        self.break_entrance_and_exit()
 
     def animate(self):
         self.win.redraw()
         time.sleep(0.15)
-        
+  
+    def break_entrance_and_exit(self):
+        entrance = self.cells[0][0]
+        exit = self.cells[self.num_cols-1][self.num_rows-1]
+        print("Breaking entrance")
+        entrance.has_top_wall = False
+        entrance.draw()
+        print("Entrance broken and redrawn")
+
+        print("Breaking exit")
+        exit.has_bottom_wall = False
+        exit.draw()
+        print("Exit broken and redrawn")
