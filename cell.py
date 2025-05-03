@@ -11,6 +11,7 @@ class Cell():
         self.x2 = p2.x
         self.y2 = p2.y
         self.win = window
+        self.visited = visited
 
     def draw(self):
         if self.win is None:
